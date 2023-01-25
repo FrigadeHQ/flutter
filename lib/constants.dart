@@ -1,1 +1,1 @@
-const urlPrefix = "https://api.frigade.com/v1/";
+const urlPrefix = "https://api.frigade.com/v1";
