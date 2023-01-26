@@ -1,40 +1,25 @@
 import 'dart:convert';
 
-class Flow {
-  late int id;
-  late String customerId;
-  late String organizationId;
+class FrigadeFlow {
+  late String id;
   late String name;
-  late Map<String, dynamic> data;
-  late String description;
-  late String createdAt;
-  late String modifiedAt;
-  late String version;
-  late String slug;
+  late List<dynamic> steps;
+  late DateTime createdAt;
+  late int version;
 
-  Flow({
+  FrigadeFlow({
     required this.id,
-    required this.customerId,
-    required this.organizationId,
     required this.name,
-    required this.data,
-    required this.description,
+    required this.steps,
     required this.createdAt,
-    required this.modifiedAt,
     required this.version,
-    required this.slug,
   });
 
-  Flow.fromJson(Map<String, dynamic> jsonData) {
-    id = jsonData['id'];
-    customerId = jsonData['customerId'];
-    organizationId = jsonData['organizationId'];
+  FrigadeFlow.fromJson(Map<String, dynamic> jsonData) {
+    id = jsonData['slug'];
     name = jsonData['name'];
-    data = json.decode(jsonData['data']);
-    description = jsonData['description'];
-    createdAt = jsonData['createdAt'];
-    modifiedAt = jsonData['modifiedAt'];
+    steps = json.decode(jsonData['data'])['data'] ?? [];
+    createdAt = DateTime.parse(jsonData['createdAt']);
     version = jsonData['version'];
-    slug = jsonData['slug'];
   }
 }
